@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>generonimos tablas</title>
+</head>
+<body class="page">
+    <h1>Paso 1</h1>
+    <p>Copiar esta tabla</p>
+
+    <div id="tablaOutput"></div>
+
+    <h2>Paso 2</h2>
+    <p>Copiar pegar en un google sheet. Agregar columna de translate y separar por caracter "|". Pegar aqui la primer columna y la traducida</p>
+    <textarea id="tablaInput" onchange="parseTablaInput()"></textarea>
+
+</body>
+
+
+
+<script type="text/javascript" src="js/data-cards_es.js"></script>
+<script>
+var tablaOutput = document.getElementById("tablaOutput")
+const keysToTranslate = ["name", "desc"]
+Object.keys(cardData).forEach((key) => {
+    cardData[key].forEach((entry, i) => {
+        keysToTranslate.forEach(keyToTranslate => {
+            if(entry[keyToTranslate]){
+                let path = [key, i, keyToTranslate]
+                let text = entry[keyToTranslate]
+                let span = document.createElement("div");
+                const node = document.createTextNode(`${JSON.stringify(path)}|${text}`);
+                span.appendChild(node)
+                tablaOutput.appendChild(span)
+            }
+        })
+    });
+});
+
+var tablaInput = document.getElementById("tablaInput")
+function parseTablaInput(){
+    var row = tablaInput.value.split('\n');
+    for (var i=0; i<row.length; i++) {
+        col = row[i].split('\t');
+        // console.log(JSON.parse(col[0]), col[1])
+        let path = JSON.parse(col[0])
+        cardData[path[0]][path[1]][path[2]] = col[1]
+    }
+    console.log(cardData)
+}
+
+</script>
