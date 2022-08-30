@@ -4,7 +4,7 @@
  * I'd recommend making a new entry in CardData for your custom cards, eg
  *    var cardData = {
  *	    katesCards: [{...},
- * 
+ *
  * A card must have a name, and an optional description
  * The type of card is set by which inputs and outputs it has
  * Input cards have "modOut" and "output" data types
@@ -16,6 +16,12 @@
 
 var cardData = {
     "standardInput": [
+        {
+            "name": "IA texto a imagen",
+            "desc": "Inteligencia artifical como Dalle 2 o Midjourney que recibe un texto y devuelve cuatro imágenes",
+            "input": "text(texto fuente)",
+            "output": "image image image image"
+        },
         {
             "name": "Mesa táctil o tablet",
             "modOut": "person",
@@ -94,7 +100,7 @@ var cardData = {
             ]
         },
         {
-            "name": "MoUsa",
+            "name": "Mouse",
             "output": [
                 "vector(posición puntero)",
                 "event(click izquierdo)",
@@ -392,7 +398,7 @@ var cardData = {
         },
         {
             "name": "Obtener nombre de color",
-			"titleScale": 0.9,
+			"titleScale": 0.83,
             "input": "color(input color)",
             "output": "text(nombre color más cercano) color(color más cercano)",
             "desc": "Usa el directorio webcolor o la encuesta de color XKCD para obtener un nombre para este color"
@@ -418,7 +424,7 @@ var cardData = {
         {
             "name": "Haz algo aquí",
             "desc": "organizar una fiesta, plantar un jardín o celebrar un mitin en este lugar",
-            "input": "geolocation"
+            "input": "geolocation",
         },
         {
             "name": "Datos de población",
@@ -428,9 +434,10 @@ var cardData = {
         },
         {
             "name": "Condiciones oceánicas",
+            "titleScale": 0.9,
             "desc": "Obtenga las condiciones del océano de la API de NOAA",
             "input": "*geolocation",
-            "output": "vector(corriento) vector(viento) value(salinidad) value(visibilidad) value(temperatura del agua)"
+            "output": "vector(corriente) vector(viento) value(salinidad) value(visibilidad) value(temperatura del agua)"
         }
     ],
     "math": [
@@ -636,7 +643,7 @@ var cardData = {
         {
             "name": "Texto a formas",
             "desc": "Convierte este texto en formas describidas",
-            "input": "text(texto fuento) *shape(glifos de fuente) *vector(ángulo téxto) *vector(tamaño de fuente)",
+            "input": "text(texto fuente) *shape(glifos de fuente) *vector(ángulo téxto) *vector(tamaño de fuente)",
             "output": "shape(text outlines)"
         },
         {
@@ -909,7 +916,7 @@ var cardData = {
         },
         {
             "name": "Jugar un videojuego",
-            "desc": "Super Mario Brothers, Halo y Tetris requieren el mismo tipo de input",
+            "desc": "Super Mario, Counter y Tetris requieren el mismo tipo de input",
             "input": "event(botón) state(izquierda) state(derecha) state(arriba) state(abajo)"
         },
         {
